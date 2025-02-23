@@ -5,6 +5,7 @@
 
 # Calcul de A^(d) ----
 compute_Ad = function(A){
+  # A : matrice adjacente 
   
   d = nrow(A)
   
@@ -38,8 +39,7 @@ compute_Ad = function(A){
 }
 
 # Validation compute_Ad ----
-# Dépendances : alpha12 = 0.2; alpha23 = 0.4; alpha24 = 0.7
-alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7
+alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
 
 # Matrice adjacente
 A = matrix(c(1, alpha12, 0, 0,
@@ -57,12 +57,15 @@ compute_Ad(A)[1, 3] # même résultat
 
 # Calcul lambda*A^(d) ----
 compute_var_cov_N = function(A, lambda){
+  # A : matrice adjacente 
+  # lambda : paramètre des lois de Poisson
+  
   lambda * compute_Ad(A)
 }
 
 # Validation compute_var_cov_N ----
 # lambda*A^(d)
-lambda = 3
+lambda = 3 # paramètre des lois de Poisson
 compute_var_cov_N(A, lambda)
 
 # cov(N1, N3) = lambda * alpha12 * alpha23

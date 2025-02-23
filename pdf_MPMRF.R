@@ -44,6 +44,7 @@ pdf_MPMRF = function(A, lambda, x_vec, root_node){
     
   }
   
+  # output pdf
   dpois(x_vec[root_node], lambda) * prod(prod_vec)
   
 }
