@@ -49,8 +49,9 @@ pdf_MPMRF = function(A, lambda, x_vec, root_node){
   
 }
 
-
-
+# Validation pdf_MPMRF ----
+grid = expand.grid(0:10, 0:10, 0:10, 0:10)
+sum(apply(grid, 1, function(x) pdf_MPMRF(A, 1, x, 1))) # somme à 1
 
 
 
