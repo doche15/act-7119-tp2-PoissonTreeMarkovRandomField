@@ -5,7 +5,6 @@
 
 source("find_parent_of_v.R")
 
-# pas testée encore
 pdf_MPMRF = function(A, lambda, x_vec, root_node){
   # A : matrice adjacente
   # lambda : paramètre des lois de Poisson
@@ -50,7 +49,8 @@ pdf_MPMRF = function(A, lambda, x_vec, root_node){
 }
 
 # Validation pdf_MPMRF ----
-grid = expand.grid(0:10, 0:10, 0:10, 0:10)
+xi = 0:10
+grid = expand.grid(xi, xi, xi, xi)
 sum(apply(grid, 1, function(x) pdf_MPMRF(A, 1, x, 1))) # somme à 1
 
 
