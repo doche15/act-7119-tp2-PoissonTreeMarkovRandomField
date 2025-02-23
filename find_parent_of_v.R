@@ -16,12 +16,14 @@ find_parent_of_v = function(A, v, root_node){
   
   mst_g = mst(g)
   
+  pav = shortest_paths(mst_g,
+                       from = root_node,
+                       to = v)$vpath[[1]][length(shortest_paths(mst_g,
+                                                               from = root_node,
+                                                               to = v)$vpath[[1]]) - 1]
+  
   # output pa(v)
-  shortest_paths(mst_g,
-                 from = root_node,
-                 to = v)$vpath[[1]][length(shortest_paths(mst_g,
-                                                          from = root_node,
-                                                          to = v)$vpath[[1]]) - 1]
+  as.numeric(pav)
   
 }
 
