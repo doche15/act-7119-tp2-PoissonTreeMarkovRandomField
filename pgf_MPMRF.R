@@ -5,8 +5,8 @@
 
 source("find_parent_of_v.R")
 source("nu_v_Tr.R")
+source("pdf_MPMRF.R")
 
-# pas testée encore
 pgf_MPMRF = function(A, lambda, t_vec, root_node){
   # A : matrice adjacente
   # lambda : paramètre des lois de Poisson
@@ -22,9 +22,11 @@ pgf_MPMRF = function(A, lambda, t_vec, root_node){
     
     i = i + 1
     
+    alpha = ifelse(v == root_node, 0, A[find_parent_of_v(A, v, root_node), v])
+    
     prod_vec[i] = exp(lambda * 
-                        (1 - A[find_parent_of_v(v), v]) *
-                        (nu(A, v, t_vec, rooot_node) - 1))
+                        (1 - alpha) *
+                        (nu(A, v, t_vec, root_node) - 1))
   
   }
   
@@ -33,4 +35,20 @@ pgf_MPMRF = function(A, lambda, t_vec, root_node){
 
 }
 
+# Validation pgf_MPMRF ----
+alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
 
+# Matrice adjacente
+A = matrix(c(1, alpha12, 0, 0,
+             alpha12, 1, alpha23, alpha24,
+             0, alpha23, 1, 0,
+             0, alpha24, 0, 1),
+           nrow = 4,
+           byrow = TRUE)
+
+ti = rep(0, 4)
+pgf_MPMRF(A, 1, ti, 1) # densité à 0
+pdf_MPMRF(A, 1, ti, 1) # même chose
+
+ti = rep(1, 4)
+pgf_MPMRF(A, 1, ti, 1) # doit donner 1

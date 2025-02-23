@@ -49,6 +49,16 @@ pdf_MPMRF = function(A, lambda, x_vec, root_node){
 }
 
 # Validation pdf_MPMRF ----
+alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
+
+# Matrice adjacente
+A = matrix(c(1, alpha12, 0, 0,
+             alpha12, 1, alpha23, alpha24,
+             0, alpha23, 1, 0,
+             0, alpha24, 0, 1),
+           nrow = 4,
+           byrow = TRUE)
+
 xi = 0:10
 grid = expand.grid(xi, xi, xi, xi)
 sum(apply(grid, 1, function(x) pdf_MPMRF(A, 1, x, 1))) # somme à 1
