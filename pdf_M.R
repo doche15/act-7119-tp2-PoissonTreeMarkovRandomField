@@ -6,7 +6,6 @@
 pdf_M = function(A, lambda){
   # A : matrice d'adjacence
   # lambda : paramètre des lois de Poisson
-  # root_node : numéro de la racine
   
   d = nrow(A)
   
@@ -49,11 +48,14 @@ pdf_M = function(A, lambda){
     
     for (k in k_domain){
       
-      prod_vec[k - 1] = exp(lambda * (1 - A[stock_pi_k[k - 1], k]) * (stock_h_k[k - 1] - 1))
+      prod_vec[k - 1] = exp(lambda * (1 - A[stock_pi_k[k - 1], k]) * 
+                              (stock_h_k[k - 1] - 1))
       
     }
     
-    phiM[l] = prod(prod_vec)
+    phiM[l] = prod(prod_vec) * 
+      exp(lambda * (1 - A[min(which(A[1,] > 0)), 1]) * 
+            (h_1 - 1)) # ajouter k = 1
     
   }
   
@@ -73,11 +75,13 @@ A = matrix(c(1, alpha12, 0, 0,
            nrow = 4,
            byrow = TRUE)
 
-lambda = 3 # paramètre des lois de Poisson
+lambda = 10 # paramètre des lois de Poisson
 
 fM = pdf_M(A, lambda)
 sum(fM) # somme à 1
 
-
+m = seq(nfft) - 1
+esp_M = sum(m*fM) # changer les dépendances ne devrait pas avoir d'impact
+var_M = sum(m^2*fM) - esp_M^2 # augmenter la dépendance devrait augmenter la variance
 
 
