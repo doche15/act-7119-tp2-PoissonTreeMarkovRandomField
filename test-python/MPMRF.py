@@ -13,12 +13,14 @@ import numpy as np
 
 
 class MPMRF():
+    """Modèle MPMRF de [Côté et al., 2025]"""
     def __init__(self, p_weighted_adjacency_matrix: np.ndarray, p_lambda):
         self.weighted_adjacency_matrix = p_weighted_adjacency_matrix
         self.lambdap = p_lambda
         self.dimension = self.weighted_adjacency_matrix.shape[0]
     
     def sample(self, p_nsamples, p_seed = 11):
+        """Algorithme 2 de [Côté et al., 2025]"""
         np.random.default_rng(seed=p_seed)
         samples = np.zeros((p_nsamples, self.dimension))
 
