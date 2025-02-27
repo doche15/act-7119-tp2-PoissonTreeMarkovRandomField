@@ -2,40 +2,40 @@
 ### Travail 2, ACT-7119
 ### Algorithm 1 : Computing the variance-covariance matrix of N.
 ###
-
+library(igraph)
 # Calcul de A^(d) ----
 compute_Ad = function(A){
-  # A : matrice adjacente 
-  
+  # A : matrice adjacente
+
   d = nrow(A)
-  
+
   Aw = A
-  
+
   for (w in seq(d)[-1]){
-    
+
     A_temp = Aw
-  
+
   # max-product matrix product
   for (i in seq(d)){
-    
+
     for (j in seq(d)){
-      
+
       vec = numeric(d)
-      
+
       for (k in seq(d)){
-      
+
         vec[k] = A_temp[i, k] * A[k, j]
-      
+
       }
-      
+
       Aw[i, j] = max(vec)
-      
+
     }
    }
   }
-  
+
  Aw
- 
+
 }
 
 # Validation compute_Ad ----
@@ -57,9 +57,9 @@ compute_Ad(A)[1, 3] # même résultat
 
 # Calcul lambda*A^(d) ----
 compute_var_cov_N = function(A, lambda){
-  # A : matrice adjacente 
+  # A : matrice adjacente
   # lambda : paramètre des lois de Poisson
-  
+
   lambda * compute_Ad(A)
 }
 

@@ -2,7 +2,7 @@
 ### Travail 2, ACT-7119
 ### Fonction récursive de nu_v^Tr(t_vdsc(v))
 ###
-
+library(igraph)
 source("find_ch_of_v.R")
 
 # pas testée encore
@@ -11,29 +11,29 @@ nu = function(A, v, t_vec, root_node){
   # v : numéro du noeud cible
   # t_vec : (t_1, ..., t_d)
   # root_node : numéro de la racine
-  
+
   ch_v = find_ch_of_v(A, v, root_node)
-  
+
   if (length(ch_v) != 0){
-    
+
   prod_vec = numeric(length(ch_v))
-  
+
   i = 0
   for (j in ch_v){
-    
+
     i = i + 1
     prod_vec[i] = 1 - A[v, j] + A[v, j] * nu(A, j, t_vec, root_node)
-    
+
     }
-  
+
   t_vec[v] * prod(prod_vec)
-  
+
   } else {
-    
+
     t_vec[v]
-    
+
   }
-  
+
 }
 
 # Validation nu ----

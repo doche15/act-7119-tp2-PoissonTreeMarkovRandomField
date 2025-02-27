@@ -2,7 +2,7 @@
 ### Travail 2, ACT-7119
 ### Fonction pour identifier les enfants selon la structure
 ###
-
+library(igraph)
 source("find_parent_of_v.R")
 
 # fonctionne pour le moment; à tester davantage
@@ -10,28 +10,28 @@ find_ch_of_v = function(A, v, root_node){
   # A : matrice adjacente
   # v : numéro de celui dont on veut les descendants
   # root_node : numéro de la racine
-  
+
   d = nrow(A)
 
   ch_v = numeric()
-    
+
   for (node in seq(d)[-c(v, root_node)]){
-    
+
     pa_node = find_parent_of_v(A,
                                v = node,
                                root_node = root_node)
-  
+
   if (pa_node == v){
-    
+
     ch_v = c(ch_v, node)
-    
+
     }
-    
+
   }
-  
+
   # output ch(v)
   ch_v
-  
+
 }
 
 # Validation find_ch_of_v ----
