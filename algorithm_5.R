@@ -6,6 +6,9 @@
 library(igraph)
 
 reroot = function(A, root_node, new_root){
+  # A : matrice d'adjacence
+  # root_node : racine initiale
+  # new_root : nouvelle racine voulue
   
   d = nrow(A)
   
@@ -75,7 +78,9 @@ plot(mst_g,
      main = "Arbre initial") # ok
 
 # Matrice d'adjacence avec nouveau choix de racine 
-A_prime = reroot(A, 1, 2)
+A_prime = reroot(A, 
+                 root_node = 1, 
+                 new_root = 2)
 
 g_prime = graph_from_adjacency_matrix(A_prime,
                                       mode = "undirected",

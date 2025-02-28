@@ -8,7 +8,7 @@ source("nu_v_Tr.R")
 source("pdf_MPMRF.R")
 
 pgf_MPMRF = function(A, lambda, t_vec, root_node){
-  # A : matrice adjacente
+  # A : matrice d'adjacence
   # lambda : paramètre des lois de Poisson
   # t_vec : (t_1, ..., t_d)
   # root_node : numéro de la racine
