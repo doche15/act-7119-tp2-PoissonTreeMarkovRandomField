@@ -22,24 +22,28 @@ calculate_pmf_M <- function(A, lambda, nfft = 2^17)
         h_k <- numeric(dimension)
 
         pi_k <- numeric(dimension)
+        k1 <- 2
 
         for (k in rev(seq(dimension))[-dimension])
         {
-            pi_k[abs(k - dimension) + 2] <- which(A[k,] > 0)[1]
+            pi_k[k1] <- which(A[k,] > 0)[1]
 
-            h_k[abs(k - dimension) + 2] <- fft_b[l] * prod(H[k,])
+            h_k[k1] <- fft_b[l] * prod(H[k,])
 
-            H[pi_k[abs(k - dimension) + 2], k] <- (1 - A[pi_k[abs(k - dimension) + 2], k]) +
-                A[pi_k[abs(k - dimension) + 2], k] *
-                h_k[abs(k - dimension) + 2]
+            H[pi_k[k1], k] <- (1 - A[pi_k[k1], k]) +
+                A[pi_k[k1], k] *
+                h_k[k1]
+            k1 <- k1 + 1
         }
 
+        # print(H)
         h_k[1] <- fft_b[l] * prod(H[1,])
 
         # print(prod(exp(lambda * (1 - A[pi_k,]) * (h_k - 1))))
         # print(unlist(sapply(seq(dimension), function(k) exp(lambda * (1 - A[pi_k[k], k]) * (h_k[k] - 1)))))
 
-        fft_M[l] <- prod(unlist(sapply(seq(dimension), function(k) exp(lambda * (1 - A[pi_k[k], k]) * (h_k[k] - 1)))))
+        # fft_M[l] <- prod(unlist(sapply(seq(dimension), function(k) exp(lambda * (1 - A[pi_k[k], k]) * (h_k[k] - 1)))))
+        fft_M[l] <- exp(lambda * (1 - 0) * (h_k[1] - 1)) * prod(unlist(sapply(2:dimension, function(k) exp(lambda * (1 - A[pi_k[k], k]) * (h_k[k] - 1)))))
         # fft_M[l] <- prod(exp(lambda * (1 - A[pi_k,]) * (h_k - 1)))
     }
 
@@ -54,7 +58,7 @@ A <- matrix(c(1, alpha12, 0, 0,
             nrow = 4,
             byrow = TRUE)
 
-xx <- calculate_pmf_M(A, 1)
+xx <- calculate_pmf_M(A, 1, nfft = 2^19)
 sum(xx)
 
 xx[1] # devrait être égal à la valeur suivante.
