@@ -17,9 +17,6 @@ pdf_M = function(A, lambda){
   
   phiM = numeric(nfft)
   
-  stock_pi_k = numeric(d - 1)
-  stock_h_k = numeric(d - 1)
-  
   k_domain = rev(seq(d)[-1])
   
   for (l in seq(nfft)){
@@ -27,6 +24,8 @@ pdf_M = function(A, lambda){
     H = matrix(data = 1,
                nrow = d,
                ncol = d) # all-1 matrix
+    
+    prod_vec = numeric(length(k_domain))
     
     for (k in k_domain){
       
@@ -37,24 +36,14 @@ pdf_M = function(A, lambda){
       
       H[pi_k, k] = 1 - A[pi_k, k] + A[pi_k, k] * h_k # overwrite H
       
-      stock_pi_k[k - 1] = pi_k
-      stock_h_k[k - 1] = h_k
+      prod_vec[k - 1] = exp(lambda * (1 - A[pi_k, k]) * 
+                              (h_k - 1))
       
     }
     
     h_1 = phib[l] * prod(H[1,])
     
-    prod_vec = numeric(length(k_domain))
-    
-    for (k in k_domain){
-      
-      prod_vec[k - 1] = exp(lambda * (1 - A[stock_pi_k[k - 1], k]) * 
-                              (stock_h_k[k - 1] - 1))
-      
-    }
-    
-    phiM[l] = prod(prod_vec) * 
-      exp(lambda * (h_1 - 1)) # ajouter k = 1
+    phiM[l] = prod(prod_vec) * exp(lambda * (h_1 - 1)) # ajouter k = 1
     
   }
   
@@ -74,7 +63,7 @@ A = matrix(c(1, alpha12, 0, 0,
            nrow = 4,
            byrow = TRUE)
 
-lambda = 10 # paramètre des lois de Poisson
+lambda = 1 # paramètre des lois de Poisson
 
 fM = pdf_M(A, lambda)
 sum(fM) # somme à 1
