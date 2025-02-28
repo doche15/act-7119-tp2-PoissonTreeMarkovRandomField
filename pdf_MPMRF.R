@@ -6,7 +6,7 @@ library(igraph)
 source("find_parent_of_v.R")
 
 pdf_MPMRF = function(A, lambda, x_vec, root_node){
-  # A : matrice adjacente
+  # A : matrice d'adjacence
   # lambda : paramètre des lois de Poisson
   # x_vec : (x_1, ..., x_d)
   # root_node : numéro de la racine

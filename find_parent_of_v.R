@@ -5,7 +5,7 @@
 library(igraph)
 # fonctionne pour le moment; à tester davantage
 find_parent_of_v = function(A, v, root_node){
-  # A : matrice adjacente
+  # A : matrice d'adjacence
   # v : numéro du child
   # root_node : numéro de la racine
 

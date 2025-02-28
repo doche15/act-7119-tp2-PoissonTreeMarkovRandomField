@@ -54,8 +54,7 @@ pdf_M = function(A, lambda){
     }
     
     phiM[l] = prod(prod_vec) * 
-      exp(lambda * (1 - A[min(which(A[1,] > 0)), 1]) * 
-            (h_1 - 1)) # ajouter k = 1
+      exp(lambda * (h_1 - 1)) # ajouter k = 1
     
   }
   
@@ -83,5 +82,4 @@ sum(fM) # somme à 1
 m = seq(nfft) - 1
 esp_M = sum(m*fM) # changer les dépendances ne devrait pas avoir d'impact
 var_M = sum(m^2*fM) - esp_M^2 # augmenter la dépendance devrait augmenter la variance
-
 
