@@ -39,7 +39,7 @@ nu = function(A, v, t_vec, root_node){
 # Validation nu ----
 alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
 
-# Matrice adjacente
+# Matrice adjacente (star)
 A = matrix(c(1, alpha12, 0, 0,
              alpha12, 1, alpha23, alpha24,
              0, alpha23, 1, 0,
