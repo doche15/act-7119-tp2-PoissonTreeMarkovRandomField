@@ -74,7 +74,6 @@ A = matrix(c(1, alpha12, 0,
              0, alpha23, 1),
            nrow = 3)
 
-
 # ch(1) avec r = 1
 find_ch_of_v(A,
              v = 1,
