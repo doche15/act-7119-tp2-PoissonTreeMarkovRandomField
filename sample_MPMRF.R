@@ -20,7 +20,7 @@ rMPMRF <-  function(n, A, lambda)
   for (k in 2:d)
   {
       pik <- min(which(A[k, ] > 0))
-      Bk <- rbinom(n, N[, k-1], A[pik, k])
+      Bk <- rbinom(n, N[, pik], A[pik, k])
       Lk <- rpois(n, lambda * (1 - A[pik, k]))
       N[, k] <- Bk + Lk
   }
