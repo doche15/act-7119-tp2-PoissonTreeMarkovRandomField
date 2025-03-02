@@ -3,13 +3,11 @@
 ### Theorem 7 : Distribution of the Sum
 ###
 
-pdf_M = function(A, lambda){
+pdf_M = function(A, lambda, nftt = 2^15){
   # A : matrice d'adjacence
   # lambda : paramètre des lois de Poisson
-
+  # nfft : longueur de la fmp
   d = nrow(A)
-
-  nfft = 2^15
 
   b = c(0, 1, rep(0, nfft - 2)) # fmp v.a. dégénérée à 1
 
