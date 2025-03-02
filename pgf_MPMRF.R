@@ -34,28 +34,28 @@ pgf_MPMRF = function(A, lambda, t_vec, root_node){
   prod(prod_vec)
 
 }
-
-# Validation pgf_MPMRF ----
-alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
-
-# Matrice adjacente
-A = matrix(c(1, alpha12, 0, 0,
-             alpha12, 1, alpha23, alpha24,
-             0, alpha23, 1, 0,
-             0, alpha24, 0, 1),
-           nrow = 4,
-           byrow = TRUE)
-
-ti = rep(0, 4)
-pgf_MPMRF(A, 1, ti, 1) # densité à 0
-pdf_MPMRF(A, 1, ti, 1) # même chose
-
-ti = rep(1, 4)
-pgf_MPMRF(A, 1, ti, 1) # doit donner 1
-
-
-ti <- c(0.3, 0.5, 0.6, 0.2)
-pgf_MPMRF(A, 1, ti, 1)
-pgf_MPMRF(A, 1, ti, 2)
-pgf_MPMRF(A, 1, ti, 3)
-pgf_MPMRF(A, 1, ti, 4)
+#
+# # Validation pgf_MPMRF ----
+# alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
+#
+# # Matrice adjacente
+# A = matrix(c(1, alpha12, 0, 0,
+#              alpha12, 1, alpha23, alpha24,
+#              0, alpha23, 1, 0,
+#              0, alpha24, 0, 1),
+#            nrow = 4,
+#            byrow = TRUE)
+#
+# ti = rep(0, 4)
+# pgf_MPMRF(A, 1, ti, 1) # densité à 0
+# pdf_MPMRF(A, 1, ti, 1) # même chose
+#
+# ti = rep(1, 4)
+# pgf_MPMRF(A, 1, ti, 1) # doit donner 1
+#
+#
+# ti <- c(0.3, 0.5, 0.6, 0.2)
+# pgf_MPMRF(A, 1, ti, 1)
+# pgf_MPMRF(A, 1, ti, 2)
+# pgf_MPMRF(A, 1, ti, 3)
+# pgf_MPMRF(A, 1, ti, 4)
