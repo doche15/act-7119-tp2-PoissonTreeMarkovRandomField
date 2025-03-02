@@ -27,22 +27,22 @@ rMPMRF <-  function(n, A, lambda)
 
   N
 }
-
-# Validation pdf_MPMRF ----
-alpha12 <-  0.2 ; alpha23 <-  0.4; alpha24 <-  0.7 # dépendances
-
-# Matrice adjacente
-A <-  matrix(c(1, alpha12, 0, 0,
-             alpha12, 1, alpha23, alpha24,
-             0, alpha23, 1, 0,
-             0, alpha24, 0, 1),
-           nrow = 4,
-           byrow = TRUE)
-
-rea <- rMPMRF(100000, A, lambda = 4)
-
-colMeans(rea)
-
-cor(rea[, 1], rea[, 2])
-cor(rea[, 3], rea[, 2])
-cor(rea[, 3], rea[, 1])
+#
+# # Validation pdf_MPMRF ----
+# alpha12 <-  0.2 ; alpha23 <-  0.4; alpha24 <-  0.7 # dépendances
+#
+# # Matrice adjacente
+# A <-  matrix(c(1, alpha12, 0, 0,
+#              alpha12, 1, alpha23, alpha24,
+#              0, alpha23, 1, 0,
+#              0, alpha24, 0, 1),
+#            nrow = 4,
+#            byrow = TRUE)
+#
+# rea <- rMPMRF(100000, A, lambda = 4)
+#
+# colMeans(rea)
+#
+# cor(rea[, 1], rea[, 2])
+# cor(rea[, 3], rea[, 2])
+# cor(rea[, 3], rea[, 1])
