@@ -3,6 +3,7 @@ source("graph_A.R")
 source("sample_MPMRF.R")
 source("pdf_M.R")
 source("pdf_MPMRF.R")
+source("pgf_MPMRF.R")
 
 alpha12 <- 0.99
 alpha13 <- 0.9
@@ -205,3 +206,14 @@ fmp_n(2, 3, 4, 0, 0, 1, 1, alpha12, alpha13, alpha34, alpha35, alpha46, alpha47,
       lam)
 pdf_MPMRF(adj, lam, c(2, 3, 4, 0, 0, 1,  1), 1)
 fmp_MPMRF(c(2, 3, 4, 0, 0, 1,  1), adj, lam)
+
+
+#### pgf_M avec pgf_N ÇA MARCHE!!!! (mais beaucoup plus long que la méthode de l'article.)
+nfft <- 2^7
+ffb <- fft(c(0, 1, rep(0, nfft-2)))
+ffM <- sapply(1:nfft, function(i) pgf_MPMRF(adj, lam, rep(ffb[i], 7), 1))
+
+fM <- Re(fft(ffM, inverse = TRUE)) / nfft
+sum(fM)
+sum((0:(nfft - 1)) * fM)
+sum((0:(nfft - 1))^2 * fM) - sum((0:(nfft - 1)) * fM)^2
