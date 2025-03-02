@@ -63,14 +63,14 @@ compute_var_cov_N = function(A, lambda){
   lambda * compute_Ad(A)
 }
 
-# Validation compute_var_cov_N ----
-# lambda*A^(d)
-lambda = 3 # paramètre des lois de Poisson
-compute_var_cov_N(A, lambda)
-
-# cov(N1, N3) = lambda * alpha12 * alpha23
-lambda * alpha12 * alpha23
-compute_var_cov_N(A, lambda)[1, 3] # même résultat
+# # Validation compute_var_cov_N ----
+# # lambda*A^(d)
+# lambda = 3 # paramètre des lois de Poisson
+# compute_var_cov_N(A, lambda)
+#
+# # cov(N1, N3) = lambda * alpha12 * alpha23
+# lambda * alpha12 * alpha23
+# compute_var_cov_N(A, lambda)[1, 3] # même résultat
 
 
 
