@@ -70,7 +70,7 @@ A <- matrix(c(1, a[1], a[2], 0, 0, 0, 0,
             nrow = 7)
 
 nfft <- 2^18
-n <- 1000000
+n <- 10000000
 
 # Échantillonnage
 resultats_ech <- rMPMRF(n, A, lam)
@@ -95,6 +95,10 @@ sum(fM)
 supportM <- 0:(nfft - 1)
 espM_th <- sum(supportM * fM)
 varM_th <- sum((supportM^2) * fM) - (sum(supportM * fM)^2)
+
+7 * lam + 2 * lam * (0.1 + 0.2 + 0.2 * 0.4 + 0.2 * 0.3 + 0.2 * 0.3 * 0.3 + 0.2 * 0.3 * 0.2 +
+                         0.1 * 0.2 + 0.1 * 0.2 * 0.4 + 0.1 * 0.2 * 0.3 + 0.1 * 0.2 * 0.3 * 0.3 +
+                         0.1 * 0.2 * 0.3 * 0.2 + 0.4 + 0.3 + 0.3 * 0.3 + 0.3 * 0.2 + 0.2 + 0.3)
 
 
 c(espM_emp = espM_emp,
