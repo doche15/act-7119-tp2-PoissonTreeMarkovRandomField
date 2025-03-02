@@ -42,5 +42,26 @@ see_tree_graph(adj, root_node = 1, titre = "Arbre d = 32")
 
 ## Simulation
 source("sample_MPMRF.R")
-nn <- 100000
-rMPMRF(nn, adj, lam)
+nn <- 10000000
+realisations <- rMPMRF(nn, adj, lam)
+
+MM <- rowSums(realisations)
+
+
+mean(MM)
+mean(MM^2) - mean(MM)^2
+
+## Exact
+source("pdf_M.R")
+
+nfft <- 2^9
+fM <- pdf_M(adj, lam, nfft)
+sum(fM)
+sum((0:(nfft - 1)) * fM)
+sum((0:(nfft - 1))^2 * fM) - sum((0:(nfft - 1)) * fM)^2
+
+cumsum(fM)[90 + 1]
+mean(MM <= 90)
+
+cumsum(fM)[98 + 1]
+mean(MM <= 98)
