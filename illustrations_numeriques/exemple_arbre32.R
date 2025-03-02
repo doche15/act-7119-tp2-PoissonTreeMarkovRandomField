@@ -33,8 +33,14 @@ for (i in 1:nrow(aretes))
     A[v, u] <- aretes_alpha[i, 3]
 }
 
-A
-g <- graph_from_adjacency_matrix(A, mode = "undirected",
-                                 weighted = TRUE,
-                                 diag = FALSE)
-plot.igraph(g)
+adj <- A
+lam <- 4
+
+source("graph_A.R")
+see_tree_graph(adj, root_node = 1, titre = "Arbre d = 32")
+
+
+## Simulation
+source("sample_MPMRF.R")
+nn <- 100000
+rMPMRF(nn, adj, lam)
