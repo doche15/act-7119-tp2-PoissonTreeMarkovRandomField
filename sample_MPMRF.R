@@ -30,6 +30,7 @@ rMPMRF <-  function(n, A, lambda)
 #
 # # Validation pdf_MPMRF ----
 # alpha12 <-  0.2 ; alpha23 <-  0.4; alpha24 <-  0.7 # dépendances
+# lambda = 4
 #
 # # Matrice adjacente
 # A <-  matrix(c(1, alpha12, 0, 0,
@@ -39,10 +40,26 @@ rMPMRF <-  function(n, A, lambda)
 #            nrow = 4,
 #            byrow = TRUE)
 #
-# rea <- rMPMRF(100000, A, lambda = 4)
+# rea <- rMPMRF(100000, A, lambda = lambda)
 #
 # colMeans(rea)
 #
 # cor(rea[, 1], rea[, 2])
 # cor(rea[, 3], rea[, 2])
 # cor(rea[, 3], rea[, 1])
+
+# source("pdf_M.R")
+# fM = pdf_M(A, lambda)
+# nfft = 2^15
+# m = seq(nfft) - 1
+# 
+# # Espérance
+# mean(rowMeans(rea))
+# sum(m*fM)
+# 
+# # Variance
+# mean(rowSums(rea)^2) - mean(rowSums(rea))^2
+# sum(m^2*fM) - esp_M^2
+
+
+

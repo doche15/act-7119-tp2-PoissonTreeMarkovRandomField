@@ -3,7 +3,7 @@
 ### Theorem 7 : Distribution of the Sum
 ###
 
-pdf_M = function(A, lambda, nftt = 2^15){
+pdf_M = function(A, lambda, nfft = 2^15){
   # A : matrice d'adjacence
   # lambda : paramètre des lois de Poisson
   # nfft : longueur de la fmp
@@ -49,10 +49,10 @@ pdf_M = function(A, lambda, nftt = 2^15){
   Re(fft(phiM, inverse = T))/nfft
 
 }
-#
+# 
 # # Validation pdf_M ----
 # alpha12 = 0.2 ; alpha23 = 0.4; alpha24 = 0.7 # dépendances
-#
+# 
 # # Matrice adjacente
 # A = matrix(c(1, alpha12, 0, 0,
 #              alpha12, 1, alpha23, alpha24,
@@ -60,13 +60,14 @@ pdf_M = function(A, lambda, nftt = 2^15){
 #              0, alpha24, 0, 1),
 #            nrow = 4,
 #            byrow = TRUE)
-#
+# 
 # lambda = 1 # paramètre des lois de Poisson
-#
+# 
 # fM = pdf_M(A, lambda)
 # sum(fM) # somme à 1
-#
+# 
+# nfft = 2^15
 # m = seq(nfft) - 1
 # esp_M = sum(m*fM) # changer les dépendances ne devrait pas avoir d'impact
 # var_M = sum(m^2*fM) - esp_M^2 # augmenter la dépendance devrait augmenter la variance
-#
+
