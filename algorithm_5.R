@@ -4,6 +4,7 @@
 ###
 
 library(igraph)
+source("graph_A.R")
 
 reroot = function(A, root_node, new_root){
   # A : matrice d'adjacence
@@ -62,41 +63,22 @@ reroot = function(A, root_node, new_root){
 #            nrow = 4,
 #            byrow = TRUE)
 #
-# g = graph_from_adjacency_matrix(A,
-#                                 mode = "undirected",
-#                                 weighted = TRUE,
-#                                 diag = FALSE)
-#
-# mst_g <- mst(g)
-#
-# plot(mst_g,
-#      layout = layout_as_tree(mst_g, root = 1), # Arbre
-#      edge.width = E(mst_g)$weight * 5, # Épaisseur de la ligne en fonction de la dépendance
-#      edge.label = round(E(mst_g)$weight, 2), # Ajouter la dépendance au graphique
-#      vertex.size = 30, # Taille node
-#      vertex.label.cex = 1.5, # Taille écriture node
-#      main = "Arbre initial") # ok
+# see_tree_graph(A,
+#                root_node = 1)
 #
 # # Matrice d'adjacence avec nouveau choix de racine
 # A_prime = reroot(A,
 #                  root_node = 1,
 #                  new_root = 2)
 #
-# g_prime = graph_from_adjacency_matrix(A_prime,
-#                                       mode = "undirected",
-#                                       weighted = TRUE,
-#                                       diag = FALSE)
+# see_tree_graph(A_prime,
+#                root_node = 1)
 #
-# mst_g_prime <- mst(g_prime)
-#
-# plot(mst_g_prime,
-#      layout = layout_as_tree(mst_g_prime, root = 1), # Arbre
-#      edge.width = E(mst_g_prime)$weight * 5, # Épaisseur de la ligne en fonction de la dépendance
-#      edge.label = round(E(mst_g_prime)$weight, 2), # Ajouter la dépendance au graphique
-#      vertex.size = 30, # Taille node
-#      vertex.label.cex = 1.5, # Taille écriture node
-#      main = "Arbre reroot") # ok
-#
-#
-#
+# Matrice d'adjacence avec nouveau choix de racine (problème)
+# A_prime_prime = reroot(A,
+#                        root_node = 1,
+#                        new_root = 3)
+# 
+# see_tree_graph(A_prime_prime,
+#                root_node = 1)
 
