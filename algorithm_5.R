@@ -4,6 +4,7 @@
 ###
 
 library(igraph)
+source("graph_A.R")
 
 reroot = function(A, root_node, new_root){
   # A : matrice d'adjacence
