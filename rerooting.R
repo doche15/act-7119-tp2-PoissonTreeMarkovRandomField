@@ -80,7 +80,8 @@ AA <- matrix(c(1, "alpha12", "alpha13", 0, 0, 0, 0,
                0, 0, 0, "alpha46", 0, 1, 0,
                0, 0, 0, "alpha47", 0, 0, 1), byrow = TRUE, ncol = 7)
 
-AA_prime <- reroot(AA, 1, 3)
+# AA_prime <- reroot(AA, 1, 3)
+AA_prime <- reroot(AA, 3)
 
 
 alpha12 <- 0.1
@@ -98,7 +99,8 @@ AA <- matrix(c(1, alpha12, alpha13, 0, 0, 0, 0,
                0, 0, 0, alpha46, 0, 1, 0,
                0, 0, 0, alpha47, 0, 0, 1), byrow = TRUE, ncol = 7)
 
-AA_pr <- reroot(AA, 1, 3)
+# AA_pr <- reroot(AA, 1, 3)
+AA_pr <- reroot(AA, 3)
 
 reaA <- rMPMRF(10000000, AA, lam)
 reaApr <- rMPMRF(10000000, AA_pr, lam)
