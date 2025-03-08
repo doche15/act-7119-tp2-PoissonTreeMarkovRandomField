@@ -12,7 +12,7 @@ exp_alloc_Nv = function(A, root_node, lambda, v, nfft = 2^15){
   # lambda : paramètre des lois de Poisson
   # v : numéro du noeud dont on veut l'allocation
 
-  Aprime <-  reroot(A, v)
+  Aprime <-  reroot(A, root_node, v)
 
   d = nrow(Aprime)
 
@@ -58,24 +58,24 @@ exp_alloc_Nv = function(A, root_node, lambda, v, nfft = 2^15){
 }
 
 
-### Validation
-alpha12 <-  0.2 ; alpha23 <-  0.4; alpha24 <-  0.7 # dépendances
-lambda = 4
-
-# Matrice adjacente
-A <-  matrix(c(1, alpha12, 0, 0,
-             alpha12, 1, alpha23, alpha24,
-             0, alpha23, 1, 0,
-             0, alpha24, 0, 1),
-           nrow = 4,
-           byrow = TRUE)
-
-rea <- rMPMRF(10000000, A, lambda = lambda)
-
-reaM <- rowSums(rea)
-
-expec1k <- exp_alloc_Nv(A, 1, lambda, 4)
-m <- 22
-expec1k[m]
-
-mean(rea[, 4] * (reaM == (m-1))) # semble OK
+# ### Validation
+# alpha12 <-  0.2 ; alpha23 <-  0.4; alpha24 <-  0.7 # dépendances
+# lambda = 4
+#
+# # Matrice adjacente
+# A <-  matrix(c(1, alpha12, 0, 0,
+#              alpha12, 1, alpha23, alpha24,
+#              0, alpha23, 1, 0,
+#              0, alpha24, 0, 1),
+#            nrow = 4,
+#            byrow = TRUE)
+#
+# rea <- rMPMRF(10000000, A, lambda = lambda)
+#
+# reaM <- rowSums(rea)
+#
+# expec1k <- exp_alloc_Nv(A, 1, lambda, 4)
+# m <- 22
+# expec1k[m]
+#
+# mean(rea[, 4] * (reaM == (m-1))) # semble OK

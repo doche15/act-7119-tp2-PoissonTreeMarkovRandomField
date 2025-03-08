@@ -51,7 +51,7 @@ MM <- rowSums(realisations)
 mean(MM)
 mean(MM^2) - mean(MM)^2
 
-adjpr <- reroot(adj, 4)
+adjpr <- reroot(adj, 1, 4)
 
 realisationspr <- rMPMRF(nn, adjpr, lam)
 
@@ -61,8 +61,12 @@ MMpr <- rowSums(realisationspr)
 mean(MMpr)
 mean(MMpr^2) - mean(MMpr)^2
 
-exp_alloc_Nv(adj, 1, lam, 3)[100]
+exp_alloc_Nv(adj, 1, lam, 4)[100]
 exp_alloc_Nv(adjpr, 1, lam, 1)[100]
+
+mean(realisations[, 4] * (MM == 99))
+
+mean(realisationspr[, 1] * (MMpr == 99))
 
 ## Exact
 source("pdf_M.R")
