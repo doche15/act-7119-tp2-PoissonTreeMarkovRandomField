@@ -50,6 +50,7 @@ reroot = function(A, root_node, new_root){
     A
 
 }
+
 #
 # AA <- matrix(c(1, "alpha12", "alpha13", 0, 0, 0, 0,
 #                "alpha12", 1, 0, 0, 0, 0, 0,
@@ -107,7 +108,3 @@ reroot = function(A, root_node, new_root){
 #
 # cccAppr <- exp_alloc_Nv(AA_pr, 1, lam, 4)
 # ccc[11] ## Semble ok
-
-## Attention: les résultats étaient moins proches avec mon arbre de d=32,
-##            mais peut-être que la variance est trop élevée, ce qui fait que ça diverge un peu
-
