@@ -382,7 +382,6 @@ df_alloc <- data.frame(x = 0:(nfft - 1),
                                                 names_to = "nu",
                                                 values_to = "alloc")
 
-
 dark2 <- brewer.pal(8, "Dark2")
 couleurs <- c("alloc1" = dark2[1],
               "alloc16" = dark2[2],
