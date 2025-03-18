@@ -118,7 +118,7 @@ dark2 <- brewer.pal(8, "Dark2")
     geom_vline(xintercept = 896.88, color = dark2[3], linetype = "dashed", linewidth = 1) +
         annotate("text", x = 730, y = 0.006, label = expression(VaR[0.9](M)), parse = TRUE, hjust = 0) +
         annotate("text", x = 910, y = 0.006, label = expression(TVaR[0.9](M)), parse = TRUE, hjust = 0) +
-    geom_point(col = dark2[1]) +
+    geom_point(col = dark2[1], size = 0.05) +
     labs(title = bquote("FMP de M pour la bête"),
          x = expression(x),
          y = expression(p[M](x)),
@@ -144,7 +144,7 @@ couleurs <- c("alloc1" = dark2[1],
 
 (ggFM <- ggplot(df_alloc %>% filter(x <= 1500, x > 350), aes(x = x, y = alloc, col = nu)) +
         #geom_segment(aes(xend = x, yend = 0), show.legend = TRUE) +
-        geom_point() +
+        geom_point(size = 0.2) +
         labs(title = bquote("Espérance conditionnelle de" ~ N[nu] ~ "sachant" ~  M == k),
              x = expression(k),
              y = bquote(E[N[nu] ~ "|" ~ M == k]),
